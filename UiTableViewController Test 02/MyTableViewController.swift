@@ -151,7 +151,8 @@ class MyTableViewController: UITableViewController {
                 
                 // 이미지 넘기기
                 destinationController.cellImage = foodStoreThumbnail[indexPath.row]
-                
+                destinationController.tel1 = foodStoreTel[indexPath.row]
+                destinationController.local1 = foodStoreAddress[indexPath.row]
                 
             }
         }

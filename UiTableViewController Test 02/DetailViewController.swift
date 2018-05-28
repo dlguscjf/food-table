@@ -10,12 +10,18 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var local: UILabel!
+    
+    @IBOutlet weak var tel: UILabel!
     @IBOutlet weak var cellImageView: UIImageView!
     var cellImage: String = ""
-
+    var local1: String = ""
+    var tel1: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         cellImageView.image = UIImage(named: cellImage)
+        tel.text = tel1
+        local.text = local1
     }
 
     override func didReceiveMemoryWarning() {
