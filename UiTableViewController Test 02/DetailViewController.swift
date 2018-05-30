@@ -8,20 +8,48 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    @IBOutlet weak var local: UILabel!
-    
-    @IBOutlet weak var tel: UILabel!
+    @IBOutlet weak var detailtableView: UITableView!
     @IBOutlet weak var cellImageView: UIImageView!
     var cellImage: String = ""
     var local1: String = ""
     var tel1: String = ""
+    var menu: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         cellImageView.image = UIImage(named: cellImage)
-        tel.text = tel1
-        local.text = local1
+        detailtableView.delegate = self
+        detailtableView.dataSource = self
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath)
+//        if indexPath.row == 0{
+//            cell.textLabel?.text = "주소 :" + local1}
+//        else if indexPath.row == 1{
+//            cell.textLabel?.text = "Tel :" + tel1
+//        }
+//        else {
+//            cell.textLabel?.text = "메뉴 :" + menu
+//        }
+//        return cell
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.text = "주소 :" + local1
+             return cell
+        case 1:
+             cell.textLabel?.text = "Tel :" + tel1
+             return cell
+        default:
+            cell.textLabel?.text = "메뉴 :" + menu
+             return cell
+        }
     }
 
     override func didReceiveMemoryWarning() {
